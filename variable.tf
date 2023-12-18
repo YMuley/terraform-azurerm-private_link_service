@@ -15,9 +15,9 @@ variable "resource_group_output" {
 }
 
 variable "load_balancer_output" {
-  type        = map(any)
+ type        = any
   default     = {}
-  description = "storage account output"
+  description = "load balancer output"
 }
 
 variable "subnet_output" {
