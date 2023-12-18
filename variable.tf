@@ -4,10 +4,6 @@ variable "private_link_service_list" {
   description = "private link service list"
 }
 
-variable "nat_ip_configuration" {
-  type    = list(any)
-  default = []
-}
 variable "resource_group_output" {
   type        = map(any)
   default     = {}
