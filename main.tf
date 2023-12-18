@@ -7,11 +7,11 @@ resource "azurerm_private_link_service" "private_link_service" {
   load_balancer_frontend_ip_configuration_ids = flatten([for load_balancer in var.load_balancer_output : load_balancer.id if contains(each.value.load_balancer_name, load_balancer.name) == true])
 
   nat_ip_configuration {
-    name                       =  "nat_ip_configuration_${each.value.name}"
-    private_ip_address         = each.value.private_ip_address
-    private_ip_address_version = each.value.private_ip_address_version
+    name                       = "nat_ip_configuration_${each.value.name}"
+    private_ip_address         = "nat_ip_configuration_${each.value.private_ip_address}"
+    private_ip_address_version = "nat_ip_configuration_${each.value.private_ip_address_version}"
     subnet_id                  = flatten([for subnet in var.subnet_output : subnet.id if contains(each.value.subnet_name, subnet.name) == true])
-    primary                    = each.value.primary
+    primary                    = false
   }
 }
 
