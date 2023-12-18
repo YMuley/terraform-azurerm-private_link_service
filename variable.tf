@@ -17,9 +17,9 @@ variable "load_balancer_output" {
 }
 
 variable "subnet_output" {
+  description = "Map of subnet output"
   type        = map(any)
   default     = {}
-  description = "subnet output"
 }
 
 variable "default_values" {
