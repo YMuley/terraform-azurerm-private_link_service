@@ -13,7 +13,7 @@ resource "azurerm_private_link_service" "private_link_service" {
       name                       = nat_ip_configuration.value.name
       private_ip_address         = nat_ip_configuration.value.private_ip_address
       private_ip_address_version = nat_ip_configuration.value.private_ip_address_version
-      subnet_id                  = lookup(var.subnet_output, format("%s", nat_ip_configuration.value.subnet_name)).id
+      subnet_id                  = lookup(var.subnet_output, format("%s", nat_ip_configuration.value.subnet_name),0).id
       primary                    = true
     }
   }
