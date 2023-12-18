@@ -15,7 +15,7 @@ variable "resource_group_output" {
 }
 
 variable "load_balancer_output" {
- type        = any
+  type        = map(any)
   default     = {}
   description = "load balancer output"
 }
