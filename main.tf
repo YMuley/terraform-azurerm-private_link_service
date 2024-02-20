@@ -3,7 +3,7 @@ resource "azurerm_private_link_service" "private_link_service" {
   name                                        = each.value.name
   location                                    = each.value.location
   resource_group_name                         = var.resource_group_output[each.value.resource_group_name].name
-  load_balancer_frontend_ip_configuration_ids = each.value.lb_frontend_ip_configuration_ids  //flatten([for load_balancer in var.load_balancer_output : load_balancer.id if contains(each.value.load_balancer_name, load_balancer.name) == true])
+  load_balancer_frontend_ip_configuration_ids = flatten([for frontend_ip in each.value.lb_frontend_ip_configuration : var.load_balancer_output[frontend_ip.name].frontend_ip_configuration[frontend_ip.index].id])//each.value.lb_frontend_ip_configuration_ids  //flatten([for load_balancer in var.load_balancer_output : load_balancer.id if contains(each.value.load_balancer_name, load_balancer.name) == true])
   tags                                        = each.value.tags == null ? var.default_values.tags : each.value.tags
 
   dynamic "nat_ip_configuration" {
